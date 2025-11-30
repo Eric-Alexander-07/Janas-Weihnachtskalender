@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const doors = document.querySelectorAll(".door");
 
   const today = new Date();
-  const computedDay = today.getMonth() === 10 ? Math.min(today.getDate(), 24) : 0; // 11 = December, sonst alles gesperrt
+  const computedDay = today.getMonth() === 11 ? Math.min(today.getDate(), 24) : 0; // 11 = December, sonst alles gesperrt
   const currentDay = typeof debugDayOverride === "number" ? debugDayOverride : computedDay;
 
   const loadOpenedDays = () => {
