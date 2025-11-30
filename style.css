@@ -324,6 +324,7 @@ button {
   line-height: 1.6;
   font-size: 0.97rem;
   color: #3c2f3a;
+  white-space: pre-line;
 }
 
 .door-preview {
