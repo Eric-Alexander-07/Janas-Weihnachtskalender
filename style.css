@@ -150,22 +150,6 @@ button {
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.25s ease, opacity 0.2s ease;
 }
 
-.door::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: 24px;
-  padding: 2px;
-  background: conic-gradient(#ff86c8, #ffc861, #7df3d2, #b48dff, #ff86c8);
-  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transform: scale(0.98);
-  transition: opacity 0.28s ease, transform 0.28s ease, filter 0.28s ease;
-  pointer-events: none;
-}
-
 .door:nth-child(3n) {
   --door-gradient: linear-gradient(135deg, #ffb6d8, #ffd6b8);
 }
@@ -211,13 +195,6 @@ button {
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 16px 34px rgba(0, 0, 0, 0.38);
   filter: saturate(1.06);
-}
-
-.door:not(.locked):hover::before,
-.door:not(.locked):focus-visible::before {
-  opacity: 1;
-  transform: scale(1);
-  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.25));
 }
 
 .door.locked {
