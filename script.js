@@ -212,21 +212,24 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const addPreviewToDoor = (door, dayData) => {
-    if (door.querySelector(".door-preview")) return;
-    const preview = document.createElement("div");
-    preview.className = "door-preview";
+    door.classList.add("has-preview");
+    door.style.setProperty("--door-photo", `url("${dayData.imageUrl || placeholderImage}")`);
 
-    const thumb = document.createElement("div");
-    thumb.className = "door-preview-thumb";
-    thumb.style.backgroundImage = `url("${dayData.imageUrl || placeholderImage}")`;
+    let preview = door.querySelector(".door-preview");
+    if (!preview) {
+      preview = document.createElement("div");
+      preview.className = "door-preview";
+      door.appendChild(preview);
+    }
 
-    const text = document.createElement("p");
-    text.className = "door-preview-text";
+    let text = preview.querySelector(".door-preview-text");
+    if (!text) {
+      text = document.createElement("p");
+      text.className = "door-preview-text";
+      preview.appendChild(text);
+    }
+
     text.textContent = dayData.shortText || "";
-
-    preview.appendChild(thumb);
-    preview.appendChild(text);
-    door.appendChild(preview);
   };
 
   doors.forEach((door) => {

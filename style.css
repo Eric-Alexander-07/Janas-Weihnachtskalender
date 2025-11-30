@@ -125,6 +125,8 @@ button {
 }
 
 .door {
+  --door-gradient: linear-gradient(135deg, #ffb7c5, #ff8c82);
+  --door-photo: var(--door-gradient);
   position: relative;
   display: grid;
   place-items: center;
@@ -132,7 +134,10 @@ button {
   border: none;
   border-radius: 20px;
   color: var(--door-text);
-  background: linear-gradient(135deg, #ffb7c5, #ff8c82);
+  background: var(--door-gradient);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: var(--shadow);
   cursor: pointer;
@@ -146,15 +151,15 @@ button {
 }
 
 .door:nth-child(3n) {
-  background: linear-gradient(135deg, #ffb6d8, #ffd6b8);
+  --door-gradient: linear-gradient(135deg, #ffb6d8, #ffd6b8);
 }
 
 .door:nth-child(3n + 1) {
-  background: linear-gradient(135deg, #ff9aa9, #ffb27f);
+  --door-gradient: linear-gradient(135deg, #ff9aa9, #ffb27f);
 }
 
 .door:nth-child(3n + 2) {
-  background: linear-gradient(135deg, #ffcedc, #ffe4c9);
+  --door-gradient: linear-gradient(135deg, #ffcedc, #ffe4c9);
 }
 
 .door::after {
@@ -208,8 +213,26 @@ button {
 }
 
 .door.opened {
-  background: linear-gradient(135deg, #ffd7e1, #ffe5c7);
   transform: translateY(-2px) scale(1.01);
+}
+
+.door.opened.has-preview {
+  background-image: linear-gradient(180deg, rgba(12, 4, 10, 0) 40%, rgba(12, 4, 10, 0.55) 100%), var(--door-photo);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.42);
+}
+
+.door.opened.has-preview .door-label {
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.door.opened.has-preview .door-heart {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
 }
 
 .door.opened::before {
@@ -219,7 +242,7 @@ button {
   left: -18px;
   padding: 4px 18px;
   background: var(--accent-strong);
-  color: #501726;
+  color: #4d1422;
   font-size: 0.65rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -301,34 +324,26 @@ button {
 
 .door-preview {
   position: absolute;
-  inset: auto 10px 10px 10px;
-  display: grid;
-  grid-template-columns: 54px 1fr;
-  gap: 10px;
-  align-items: center;
-  padding: 8px 10px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.82);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
-  color: var(--door-text);
+  inset: auto 0 0 0;
+  padding: 14px 14px 16px;
+  border-radius: 0 0 18px 18px;
+  background: linear-gradient(180deg, rgba(8, 4, 10, 0) 0%, rgba(8, 4, 10, 0.55) 95%);
+  box-shadow: none;
+  color: #fff;
   animation: previewIn 0.35s ease;
+  backdrop-filter: blur(1.5px);
 }
 
 .door-preview-thumb {
-  width: 54px;
-  height: 54px;
-  border-radius: 12px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: none;
 }
 
 .door-preview-text {
   margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.35;
-  color: #2e1a24;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
