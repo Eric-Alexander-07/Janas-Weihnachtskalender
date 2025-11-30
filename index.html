@@ -1,11 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Unser Adventskalender</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
+  <div class="wrapper">
+    <header class="hero">
+      <span class="pill">Dezember</span>
+      <h1>Unser digitaler Adventskalender</h1>
+      <p class="subtitle">Jeden Tag eine kleine &Uuml;berraschung</p>
+    </header>
+
+    <main>
+      <div class="calendar">
+        <button class="door" data-day="1" aria-label="Tag 1" style="--i:1;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">1</span>
+        </button>
+        <button class="door" data-day="2" aria-label="Tag 2" style="--i:2;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">2</span>
+        </button>
+        <button class="door" data-day="3" aria-label="Tag 3" style="--i:3;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">3</span>
+        </button>
+        <button class="door" data-day="4" aria-label="Tag 4" style="--i:4;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">4</span>
+        </button>
+        <button class="door" data-day="5" aria-label="Tag 5" style="--i:5;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">5</span>
+        </button>
+        <button class="door" data-day="6" aria-label="Tag 6" style="--i:6;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">6</span>
+        </button>
+        <button class="door" data-day="7" aria-label="Tag 7" style="--i:7;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">7</span>
+        </button>
+        <button class="door" data-day="8" aria-label="Tag 8" style="--i:8;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">8</span>
+        </button>
+        <button class="door" data-day="9" aria-label="Tag 9" style="--i:9;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">9</span>
+        </button>
+        <button class="door" data-day="10" aria-label="Tag 10" style="--i:10;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">10</span>
+        </button>
+        <button class="door" data-day="11" aria-label="Tag 11" style="--i:11;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">11</span>
+        </button>
+        <button class="door" data-day="12" aria-label="Tag 12" style="--i:12;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">12</span>
+        </button>
+        <button class="door" data-day="13" aria-label="Tag 13" style="--i:13;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">13</span>
+        </button>
+        <button class="door" data-day="14" aria-label="Tag 14" style="--i:14;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">14</span>
+        </button>
+        <button class="door" data-day="15" aria-label="Tag 15" style="--i:15;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">15</span>
+        </button>
+        <button class="door" data-day="16" aria-label="Tag 16" style="--i:16;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">16</span>
+        </button>
+        <button class="door" data-day="17" aria-label="Tag 17" style="--i:17;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">17</span>
+        </button>
+        <button class="door" data-day="18" aria-label="Tag 18" style="--i:18;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">18</span>
+        </button>
+        <button class="door" data-day="19" aria-label="Tag 19" style="--i:19;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">19</span>
+        </button>
+        <button class="door" data-day="20" aria-label="Tag 20" style="--i:20;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">20</span>
+        </button>
+        <button class="door" data-day="21" aria-label="Tag 21" style="--i:21;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">21</span>
+        </button>
+        <button class="door" data-day="22" aria-label="Tag 22" style="--i:22;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">22</span>
+        </button>
+        <button class="door" data-day="23" aria-label="Tag 23" style="--i:23;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">23</span>
+        </button>
+        <button class="door" data-day="24" aria-label="Tag 24" style="--i:24;">
+          <span class="door-heart">&hearts;</span>
+          <span class="door-label">24</span>
+        </button>
+      </div>
+    </main>
+
+    <div class="modal-backdrop hidden" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true">
+        <button class="modal-close" aria-label="Schlie&szlig;en">&times;</button>
+        <div class="modal-media">
+          <img class="modal-image" src="" alt="">
+        </div>
+        <h2 class="modal-title">Tag X</h2>
+        <p class="modal-content">Platzhalter-Inhalt fuer Tag X</p>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>Mit ganz viel Liebe erstellt &#10084;</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
