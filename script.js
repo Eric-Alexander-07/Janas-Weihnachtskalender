@@ -2,15 +2,16 @@
 // const debugDayOverride = 24;
 
 const placeholderImage = "https://images.unsplash.com/photo-1512914890250-353c97c9e7db?auto=format&fit=crop&w=1200&q=60";
+const OPENED_STORAGE_KEY = "calendarOpenedDays";
 
 // Pflege nur dieses Array: Inhalte fuer alle 24 Tage
 const days = [
   {
     day: 1,
-    title: "Tag 1",
-    shortText: "Kleine Vorschau fuer Tag 1",
-    fullText: "Langer Text fuer dieses Tuerchen mit mehr Details und lieben Worten.",
-    imageUrl: placeholderImage,
+    title: "Silvester 2024",
+    shortText: "Wunderkerzen",
+    fullText: "Ein schöner Moment und ein noch schöneres Bild.",
+    imageUrl: "pictures/day01.jpg",
   },
   {
     day: 2,
@@ -184,8 +185,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const doors = document.querySelectorAll(".door");
 
   const today = new Date();
-  const computedDay = today.getMonth() === 11 ? Math.min(today.getDate(), 24) : 0; // 11 = December, sonst alles gesperrt
+  const computedDay = today.getMonth() === 10 ? Math.min(today.getDate(), 24) : 0; // 11 = December, sonst alles gesperrt
   const currentDay = typeof debugDayOverride === "number" ? debugDayOverride : computedDay;
+
+  const loadOpenedDays = () => {
+    try {
+      const stored = JSON.parse(localStorage.getItem(OPENED_STORAGE_KEY) || "[]");
+      return new Set(stored.filter((n) => Number.isInteger(n)));
+    } catch (err) {
+      return new Set();
+    }
+  };
+
+  const saveOpenedDays = (openedSet) => {
+    const values = Array.from(openedSet.values());
+    localStorage.setItem(OPENED_STORAGE_KEY, JSON.stringify(values));
+  };
+
+  const openedDays = loadOpenedDays();
 
   // Mark doors that are still locked for future days
   doors.forEach((door) => {
@@ -232,6 +249,24 @@ document.addEventListener("DOMContentLoaded", () => {
     text.textContent = dayData.shortText || "";
   };
 
+  const markDoorAsOpened = (door, dayData, dayNumber) => {
+    door.classList.add("opened");
+    addPreviewToDoor(door, dayData);
+    openedDays.add(dayNumber);
+    saveOpenedDays(openedDays);
+  };
+
+  // Re-apply opened state from previous sessions (but not for future days)
+  doors.forEach((door) => {
+    const dayNumber = Number(door.dataset.day);
+    const dayData = days.find((entry) => entry.day === dayNumber);
+    if (!dayData) return;
+
+    if (openedDays.has(dayNumber) && dayNumber <= currentDay) {
+      markDoorAsOpened(door, dayData, dayNumber);
+    }
+  });
+
   doors.forEach((door) => {
     door.addEventListener("click", () => {
       const dayNumber = Number(door.dataset.day);
@@ -240,8 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (dayNumber > currentDay || door.classList.contains("locked")) return;
 
-      door.classList.add("opened");
-      addPreviewToDoor(door, dayData);
+      markDoorAsOpened(door, dayData, dayNumber);
       openModal(dayData);
     });
   });
