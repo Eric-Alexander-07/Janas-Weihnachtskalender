@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const doors = document.querySelectorAll(".door");
 
   const today = new Date();
-  const computedDay = today.getMonth() === 11 ? today.getDate() : 24; // 11 = December
+  const computedDay = today.getMonth() === 11 ? Math.min(today.getDate(), 24) : 0; // 11 = December, sonst alles gesperrt
   const currentDay = typeof debugDayOverride === "number" ? debugDayOverride : computedDay;
 
   // Mark doors that are still locked for future days
