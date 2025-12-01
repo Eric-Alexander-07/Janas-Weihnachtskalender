@@ -10,7 +10,7 @@ const days = [
     day: 1,
     title: "Silvester 2024",
     shortText: "Wunderkerzen",
-    fullText: "Ein wundervoller Tag und ein noch schöneres Bild.\nDein Lächeln macht jeden Tag heller.\n\nErfreue dich an 24 süße Einblicken in unsere Vergangenheit.",
+    fullText: "Ein wundervoller Tag und ein noch schöneres Bild.\nDein Lächeln macht jeden Tag heller.\n\nErfreue dich an 24 süßen Einblicken in unsere Vergangenheit.",
     imageUrl: "pictures/day01.jpg",
   },
   {
